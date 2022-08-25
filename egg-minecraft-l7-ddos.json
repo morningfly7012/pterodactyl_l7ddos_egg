@@ -1,0 +1,94 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2022-08-25T12:59:54+08:00",
+    "name": "Minecraft L7 ddos",
+    "author": "sneaky@sneakyhub.com",
+    "description": "\u4e00\u500b\u5c08\u9580 For Minecraft \u7684 L7 ddos \u653b\u64ca\u5668",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:java_8": "ghcr.io\/parkervcp\/yolks:java_8",
+        "ghcr.io\/parkervcp\/yolks:java_11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "ghcr.io\/parkervcp\/yolks:java_16": "ghcr.io\/parkervcp\/yolks:java_16"
+    },
+    "file_denylist": [],
+    "startup": "java -jar {{JARFILE}} {{IP}} {{PR}} {{ME}} {{S}} {{CPS}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": [\r\n        \"change this text 1\",\r\n        \"change this text 2\"\r\n    ]\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Java Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\nPROJECT=java\r\n\r\napt update\r\napt install -y curl jq\r\n\r\ncd \/mnt\/server",
+            "container": "debian:buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "JAR \u6a94\u6848",
+            "description": "",
+            "env_variable": "JARFILE",
+            "default_value": "MCBOT.jar",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "\u653b\u64ca\u7684\u4f4d\u7f6e",
+            "description": "\u683c\u5f0f\u70ba [IP:Port]",
+            "env_variable": "IP",
+            "default_value": "127.0.0.1:6969",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:50",
+            "field_type": "text"
+        },
+        {
+            "name": "MC\u7248\u672c\u5354\u8b70",
+            "description": "\u8acb\u81ea\u5df1\u5230 Google \u67e5\u8a62 Wiki \u5c31\u6709\u4e86",
+            "env_variable": "PR",
+            "default_value": "760",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "\u653b\u64ca\u6a21\u5f0f",
+            "description": "\u8a73\u60c5\u8acb\u81f3 methods.txt \u67e5\u770b",
+            "env_variable": "ME",
+            "default_value": "join",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "\u653b\u64ca\u79d2\u6578",
+            "description": "\u4ee5\u6bcf\u79d2\u70ba\u55ae\u4f4d",
+            "env_variable": "S",
+            "default_value": "300",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "CPS",
+            "description": "\u5c31\u662fCPS",
+            "env_variable": "CPS",
+            "default_value": "5000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100",
+            "field_type": "text"
+        }
+    ]
+}
